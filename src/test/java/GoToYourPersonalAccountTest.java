@@ -1,6 +1,7 @@
 import client.Client;
 import client.ClientFaker;
 import client.ClientSteps;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
@@ -30,6 +31,7 @@ public class GoToYourPersonalAccountTest extends BrowserFactory {
 
     @Test
     @DisplayName("Переход в личный кабинет")
+    @Description("Тест проверяет возможность перехода в личный кабинет авторизованного пользователя")
     public void transitionToProfileTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);

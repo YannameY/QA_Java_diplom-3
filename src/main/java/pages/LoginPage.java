@@ -1,6 +1,8 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,26 +25,36 @@ public class LoginPage { // Объявляем класс pages.LoginPage
         this.driver = driver; // Устанавливаем переданный WebDriver
     }
 
+    @Step("Ввод email в поле ввода")
     public void setEmailField(String email) {
         driver.findElement(emailField).sendKeys(email);
     }
 
+    @Step("Ввести пароль в поле ввода")
     public void setPasswordField(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
 
+    @Step("Нажать кнопку 'Войти'")
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
 
+    @Step("Нажать кнопку 'Зарегистрироваться'")
     public void clickRegisterButton() {
-        driver.findElement(registerButton).click();
+        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(registerButton));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
     }
 
+    @Step("Нажать кнопку 'Восстановить пароль'")
     public void clickForgotPasswordButton() {
-        driver.findElement(forgotPasswordButton).click();
+        WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(forgotPasswordButton));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
     }
 
+    @Step("Получить текст заголовка 'Вход'")
     public String getEnterLabelText() {
         // Ожидаем появления элемента и его видимости в течение 10 секунд
         WebElement element = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -50,6 +62,7 @@ public class LoginPage { // Объявляем класс pages.LoginPage
         return element.getText();
     }
 
+    @Step("Заполнить форму входа: email '{email}', пароль")
     public void setClientLoginData(String email, String password) {
         setEmailField(email);
         setPasswordField(password);

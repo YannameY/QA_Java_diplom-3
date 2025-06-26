@@ -1,4 +1,5 @@
 package pages;// pages.MainPage.java
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,15 +21,17 @@ public class MainPage {
         this.driver = driver;
     }
 
+    @Step("Нажать кнопку 'Войти в аккаунт'")
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
 
+    @Step("Получить текст кнопки 'Оформить заказ'")
     public String getCreateOrderButtonText(){
         return driver.findElement(createOrderButton).getText();
     }
 
-
+    @Step("Получить текст активного раздела меню")
     public String getMenuTabLocator() {
         // Ожидаем появления и видимости элемента в течение 10 секунд
         WebElement menuTab = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -36,6 +39,7 @@ public class MainPage {
         return menuTab.getText();
     }
 
+    @Step("Нажать кнопку 'Личный Кабинет'")
     public void clickAccountButton() {
         try {
             // 1. Ожидаем кликабельности элемента с обработкой перекрытия
@@ -77,6 +81,7 @@ public class MainPage {
         }
     }
 
+    @Step("Перейти в раздел 'Булки'")
     public void clickBunButton() {
         driver.findElement(bunButton).click();
         // Ждем, пока кнопка "Булки" станет активной (видимой)
@@ -88,6 +93,7 @@ public class MainPage {
         }
     }
 
+    @Step("Перейти в раздел 'Соусы'")
     public void clickSauceButton() {
         driver.findElement(sauceButton).click(); // Кликаем кнопку "Соусы"
         // Ожидаем, пока раздел "Соусы" станет активным
@@ -99,6 +105,7 @@ public class MainPage {
         }
     }
 
+    @Step("Перейти в раздел 'Начинки'")
     public void clickFillingButton() {
         driver.findElement(fillingButton).click();// Кликаем кнопку "Начинки"
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));

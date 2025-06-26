@@ -2,6 +2,7 @@ import client.Client;
 import client.ClientFaker;
 import client.ClientLogin;
 import client.ClientSteps;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
@@ -27,6 +28,7 @@ public class RegistrationTest extends BrowserFactory {
 
     @Test
     @DisplayName("Регистрация пользователя")
+    @Description("Тест проверяет успешную регистрацию нового пользователя")
     public void registerNewClientTest() {
         // Генерируем случайного пользователя
         client = ClientFaker.getRandomClient();
@@ -46,6 +48,7 @@ public class RegistrationTest extends BrowserFactory {
 
     @Test
     @DisplayName("Регистрация пользователя с некорректным паролем")
+    @Description("Тест проверяет обработку ошибки при регистрации с некорректным паролем")
     public void registerNewClientWithWrongPasswordTest() {
         // Генерируем случайного пользователя с некорректным паролем
         client = ClientFaker.getRandomClientWithWrongPassword();

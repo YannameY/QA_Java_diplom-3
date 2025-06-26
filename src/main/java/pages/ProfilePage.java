@@ -1,4 +1,5 @@
 package pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,7 +9,8 @@ import java.time.Duration;
 
 public class ProfilePage {
     private WebDriver driver; // Поле для хранения экземпляра WebDriver
-    private By logoButton = By.xpath(".//div[@class='AppHeader_header__logo__2D0X2']"); // Локатор кнопки с логотипом на странице
+    private By logoButton1 = By.xpath(".//div/a[@href='/']");
+    private By logoButton2 = By.xpath(".//div[@class='AppHeader_header__logo__2D0X2']"); // Локатор кнопки с логотипом на странице
     private By logoutButton = By.xpath(".//button[text()='Выход']");
     private By constructorButton = By.xpath(".//p[text()='Конструктор']");
 
@@ -17,6 +19,7 @@ public class ProfilePage {
         this.driver = driver;
     }
 
+    @Step("Нажать кнопку 'Конструктор'")
     public void clickConstructorButton() {
         try {
             // 1. Ожидаем кликабельности элемента с обработкой перекрытия
@@ -59,11 +62,11 @@ public class ProfilePage {
 
     }
 
-    // Метод для клика по кнопке с логотипом на странице
+    @Step("Нажать на логотип")
     public void clickLogoButton() {
         By[] possibleLocators = {
-                By.xpath(".//div/a[@href='/']"),
-                By.xpath("//div[@class='AppHeader_header__logo__2D0X2']")
+                logoButton1,
+                logoButton2
         };
 
         WebElement logo = findFirstVisibleElement(possibleLocators, 3);
@@ -87,7 +90,7 @@ public class ProfilePage {
         throw new NoSuchElementException("Не найдено ни одного видимого элемента по указанным локаторам");
     }
 
-    // Метод для клика по кнопке "Выход" в личном кабинете
+    @Step("Нажать кнопку 'Выход'")
     public void clickLogoutButton() {
         try {
             // 1. Ожидаем кликабельности элемента с обработкой перекрытия
@@ -130,8 +133,9 @@ public class ProfilePage {
 
     }
 
+    @Step("Получить текст кнопки 'Выход'")
     public String getLogoutButtonText(){
-        return driver.findElement(logoutButton).getText(); // Получаем текст кнопки "Выход"
+        return driver.findElement(logoutButton).getText();
     }
 }
 

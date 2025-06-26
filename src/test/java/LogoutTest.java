@@ -1,6 +1,7 @@
 import client.Client;
 import client.ClientFaker;
 import client.ClientSteps;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
@@ -31,6 +32,7 @@ public class LogoutTest extends BrowserFactory {
 
     @Test
     @DisplayName("Выход из аккаунта в личном кабинете")
+    @Description("Тест проверяет функционал выхода из аккаунта через личный кабинет")
     public void logoutFromProfilePageTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);

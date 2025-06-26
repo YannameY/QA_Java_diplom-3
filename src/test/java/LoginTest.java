@@ -1,6 +1,7 @@
 import client.Client;
 import client.ClientFaker;
 import client.ClientSteps;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
@@ -31,6 +32,8 @@ public class LoginTest extends BrowserFactory{
 
     @Test
     @DisplayName("Вход по кнопке «Войти в аккаунт» на главной")
+    @Description("Тест проверяет авторизацию пользователя через кнопку 'Войти в аккаунт' на главной странице. "
+            + "Ожидаемый результат: после успешной авторизации отображается кнопка 'Оформить заказ'")
     public void loginFromMainPageTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -44,6 +47,8 @@ public class LoginTest extends BrowserFactory{
 
     @Test
     @DisplayName("Вход через кнопку «Личный кабинет»")
+    @Description("Тест проверяет авторизацию пользователя через кнопку 'Личный кабинет' в хедере. "
+            + "Ожидаемый результат: после успешной авторизации отображается кнопка 'Оформить заказ'")
     public void loginFromProfilePageTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -57,6 +62,7 @@ public class LoginTest extends BrowserFactory{
 
     @Test
     @DisplayName("Вход через кнопку в форме регистрации")
+    @Description("Тест проверяет авторизацию пользователя через ссылку 'Войти' на странице регистрации")
     public void loginFromRegisterPageTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -73,6 +79,7 @@ public class LoginTest extends BrowserFactory{
 
     @Test
     @DisplayName("Вход через кнопку в форме восстановления пароля")
+    @Description("Тест проверяет авторизацию пользователя через ссылку 'Войти' на странице восстановления пароля.")
     public void loginFromForgotPasswordPageTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);

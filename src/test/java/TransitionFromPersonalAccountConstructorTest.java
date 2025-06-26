@@ -1,6 +1,7 @@
 import client.Client;
 import client.ClientFaker;
 import client.ClientSteps;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
@@ -30,6 +31,8 @@ public class TransitionFromPersonalAccountConstructorTest extends BrowserFactory
 
     @Test
     @DisplayName("Переход из личного кабинета в конструктор по клику на «Конструктор»")
+    @Description("Тест проверяет переход из личного кабинета в конструктор бургеров "
+            + "через кнопку 'Конструктор'")
     public void profileToConstructorFromButtonTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -45,6 +48,8 @@ public class TransitionFromPersonalAccountConstructorTest extends BrowserFactory
 
     @Test
     @DisplayName("Переход из личного кабинета в конструктор по клику на логотип Stellar Burgers")
+    @Description("Тест проверяет переход из личного кабинета в конструктор бургеров "
+            + "через клик по логотипу Stellar Burgers")
     public void profileToConstructorFromLogoTest() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);

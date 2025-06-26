@@ -1,6 +1,7 @@
 import client.Client;
 import client.ClientFaker;
 import client.ClientSteps;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
@@ -27,6 +28,7 @@ public class SectionConstructorTest extends BrowserFactory {
 
     @Test
     @DisplayName("Переход к разделу Булки на главной странице")
+    @Description("Тест проверяет переход в раздел 'Булки' через конструктор бургеров")
     public void bunSectionTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickSauceButton();
@@ -37,6 +39,7 @@ public class SectionConstructorTest extends BrowserFactory {
 
     @Test
     @DisplayName("Переход к разделу Соусы на главной странице")
+    @Description("Тест проверяет переход в раздел 'Соусы' через конструктор бургеров")
     public void sauceSectionTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickSauceButton();
@@ -46,13 +49,13 @@ public class SectionConstructorTest extends BrowserFactory {
 
     @Test
     @DisplayName("Переход к разделу Начинки на главной странице")
+    @Description("Тест проверяет переход в раздел 'Начинки' через конструктор бургеров")
     public void fillingSectionTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickFillingButton();
         String text = mainPage.getMenuTabLocator();
         Assert.assertEquals("Начинки", text);
     }
-
 
     @After
     public void tearDown() {
